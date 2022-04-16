@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "~> 3.65.0"
     }
   }
@@ -53,7 +53,7 @@ resource "aws_instance" "new_vm_ec2" {
   availability_zone = var.availability_zone
   subnet_id         = var.subnet_id
   key_name          = var.key_name
-  security_groups = [var.ssh_sg, var.monitoring_sg, aws_security_group.new_vm_sg.id]
+  security_groups   = [var.ssh_sg, var.monitoring_sg, aws_security_group.new_vm_sg.id]
 
   depends_on = [
     aws_security_group.new_vm_sg

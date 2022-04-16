@@ -4,7 +4,7 @@ variable "aws_profile" {
 }
 
 variable "region" {
-  default = "us-east-1"
+  default     = "us-east-1"
   description = "AWS region"
 }
 
@@ -45,16 +45,16 @@ variable "subnet_id" {
 }
 
 variable "key_name" {
-  default = "key"
+  default     = "key"
   description = "EC2 key to access instance"
 }
 
 variable "ssh_sg" {
-  default = "sg-xxxx"
+  default     = "sg-xxxx"
   description = "Security group to SSH access"
 }
 
 variable "monitoring_sg" {
-  default = "sg-xxxx"
+  default     = "sg-xxxx"
   description = "Security group for monitoring application access"
 }

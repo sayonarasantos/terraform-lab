@@ -1,6 +1,6 @@
 resource "aws_spot_instance_request" "new_vm_ec2" {
   ami                            = var.ami_id
-  instance_type     = var.instance_type
+  instance_type                  = var.instance_type
   spot_price                     = var.spot_price
   wait_for_fulfillment           = true
   instance_interruption_behavior = "stop"

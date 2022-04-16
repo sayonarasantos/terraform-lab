@@ -3,14 +3,14 @@
 #
 
 variable "region" {
-  default = "us-east-1"
+  default     = "us-east-1"
   description = "AWS region"
 }
 
 # Replace this variable with your aws cli profile name, you find them inside of the file (~/.aws/config)
 variable "profile" {
-   default     = "profile1"
-   description = "AWS CLI profile"
+  default     = "profile1"
+  description = "AWS CLI profile"
 }
 
 variable "ssh_user" {
@@ -27,7 +27,7 @@ variable "private_key_path" {
 #
 
 variable "project" {
-  default = "born-this-way"
+  default     = "born-this-way"
   description = "Project name"
 }
 
@@ -42,12 +42,12 @@ variable "environment" {
 #
 
 variable "key_name" {
-  default = "key"
+  default     = "key"
   description = "EC2 key to access instance"
 }
 
 variable "ami" {
-  default = "ami-xxxx"
+  default     = "ami-xxxx"
   description = "SO AMI ID"
 }
 
@@ -78,11 +78,11 @@ variable "cidr_blocks" {
 }
 
 variable "ssh_sg" {
-  default = "sg-xxxx"
+  default     = "sg-xxxx"
   description = "Security group to SSH access"
 }
 
 variable "monitoring_sg" {
-  default = "sg-xxxx"
+  default     = "sg-xxxx"
   description = "Security group for monitoring application access"
 }

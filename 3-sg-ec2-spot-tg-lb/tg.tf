@@ -9,7 +9,7 @@ resource "aws_lb_target_group" "backend_tg" {
 
   health_check {
     protocol = "HTTP"
-    path    = "/health"
+    path     = "/health"
   }
 
   tags = {

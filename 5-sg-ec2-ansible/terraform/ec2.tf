@@ -1,10 +1,10 @@
 resource "aws_instance" "new_vm_ec2" {
-  ami               = var.ami
-  instance_type     = var.instance_type
-  availability_zone = var.availability_zone
-  subnet_id         = var.subnet_id
-  key_name          = var.key_name
-  vpc_security_group_ids         = [var.ssh_sg, var.monitoring_sg, aws_security_group.new_vm_sg.id]
+  ami                    = var.ami
+  instance_type          = var.instance_type
+  availability_zone      = var.availability_zone
+  subnet_id              = var.subnet_id
+  key_name               = var.key_name
+  vpc_security_group_ids = [var.ssh_sg, var.monitoring_sg, aws_security_group.new_vm_sg.id]
 
   credit_specification {
     cpu_credits = "standard"

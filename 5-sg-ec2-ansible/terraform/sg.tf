@@ -3,7 +3,7 @@ resource "aws_security_group" "new_vm_sg" {
   description = format("%s project security group", var.project)
   vpc_id      = var.vpc_id
 
-ingress {
+  ingress {
     description = "Backend"
     from_port   = 9030
     to_port     = 9030
