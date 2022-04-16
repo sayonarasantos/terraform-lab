@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  become: yes
+
+  roles:
+    - role: roles/create-remote-user
+    - role: roles/install-aws-cli
+    - role: roles/install-docker
+    - role: roles/configure-ecr-access

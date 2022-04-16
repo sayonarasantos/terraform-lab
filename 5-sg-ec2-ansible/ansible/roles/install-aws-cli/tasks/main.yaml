@@ -1,0 +1,42 @@
+---
+
+- name: Install package dependencies
+  package:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - python3
+    - python3-venv
+    - unzip
+
+
+- name: Download the AWS CLI bundle
+  get_url:
+    url: https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
+    dest: /tmp/awscli-bundle.zip
+  register: aws_cli_bundle_downloaded
+
+
+- name: Unarchive the AWS CLI bundle
+  unarchive:
+    src: /tmp/awscli-bundle.zip
+    dest: /tmp
+    copy: no
+    creates: /tmp/awscli-bundle
+  when: aws_cli_bundle_downloaded.changed
+  register: aws_cli_unarchived
+
+
+- name: Install AWS CLI package
+  command: python3 /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+  when: aws_cli_unarchived.changed
+
+
+- name: Delete AWS CLI bundle files
+  file:
+    state: absent
+    path: '{{ item }}'
+  loop:
+    - /tmp/awscli-bundle
+    - /tmp/awscli-bundle.zip
+  when: aws_cli_unarchived.changed

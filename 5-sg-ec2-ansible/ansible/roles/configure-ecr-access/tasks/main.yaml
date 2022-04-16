@@ -1,0 +1,42 @@
+---
+
+- name: Create .aws folder
+  file:
+    path: /home/{{ new_user }}/.aws
+    state: directory
+    mode: '0774'
+    owner: '{{ new_user }}'
+    group: '{{ new_user }}'
+
+- name: Copy AWS CLI configuration files
+  copy:
+    src: '{{ item }}'
+    dest: /home/{{ new_user }}/.aws/
+    owner: '{{ new_user }}'
+    group: '{{ new_user }}'
+    mode: '0664'
+  with_fileglob:
+    - credentials/aws/*
+
+- name: Install the Amazon Elastic Container Registry
+  apt:
+    name: amazon-ecr-credential-helper
+    update_cache: yes
+  when: (ansible_distribution == "Debian" and ansible_distribution_version | int >= 10) or
+        (ansible_distribution == "Ubuntu" and ansible_distribution_version | int >= 20)
+
+- name: Create .docker folder
+  file:
+    path: /home/{{ new_user }}/.docker
+    state: directory
+    mode: '0700'
+    owner: '{{ new_user }}'
+    group: '{{ new_user }}'
+
+- name: Replace Docker config file
+  copy:
+    src: config.json
+    dest: /home/{{ new_user }}/.docker/config.json
+    owner: '{{ new_user }}'
+    group: '{{ new_user }}'
+    mode: '0600'

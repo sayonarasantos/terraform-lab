@@ -1,0 +1,10 @@
+# Credentials
+**/credentials
+
+# Local .terraform directories
+**/.terraform
+
+# .tfstate files
+*.tfstate*
+
+**/.terraform.lock.hcl
