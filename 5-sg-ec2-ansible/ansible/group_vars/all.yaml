@@ -1,8 +1,8 @@
 new_user: cicd
 new_user_ssh_pub: "{{ lookup('file', '{{ playbook_dir }}/credentials/ssh/cicd.pub') }}"
-folders_to_change_owner:
-  - /data/apps/
-  - /data/tests/
+folders_to_change_owner: []
+  # - /data/apps/
+  # - /data/tests/
 docker_users:
   - "{{ ansible_user }}"
   - "{{ new_user }}"
